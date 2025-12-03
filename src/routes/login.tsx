@@ -1,59 +1,19 @@
-import { styled } from "styled-components";
 import { useState } from "react";
 import { auth } from "../firebase";
 import { FirebaseError } from "firebase/app";
 import { Link, useNavigate } from "react-router-dom"
 import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  Error,
+  Form,
+  Input,
+  Switcher,
+  Title,
+  Wrapper,
+} from "../components/auth-components";
+import GithubButton from "../components/github-btn"
 
-const Wrapper = styled.div`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 420px;
-  padding: 50px 0px;
-`;
-
-const Title = styled.h1`
-  font-size: 42px
-`;
-
-const Form = styled.form`
-  margin-top: 50px;
-  margin-bottom: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-`;
-
-const Input = styled.input`
-  padding:10px 20px;
-  border-radius: 50px;
-  border:none;
-  width: 100%;
-  font-size: 16px;
-  &[type="submit"] {
-  cursor: pointer;
-  &:hover {
-    opacity: 0.8;
-    }
-  }
-`;
-
-const Error = styled.span`
-  font-weight: 600;
-  color: red;
-`;
-
-const Switcher = styled.span`
-  margin-top: 20px;
-  a {
-  color: blue;}
-}
-`;
-
-export default function CreateAccount(){
+export default function Login(){
   const navigate = useNavigate();
   const [isLoading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
@@ -115,6 +75,7 @@ export default function CreateAccount(){
         Don't have an account?{" "}
         <Link to="/create-account">Create one &rarr;</Link>
       </Switcher>
+      <GithubButton />
     </Wrapper>
   )
 }

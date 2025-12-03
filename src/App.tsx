@@ -21,23 +21,24 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path:"", // ← path 대신 index: true 를 사용할 수도 있습니다.
+        path: "", // ← path 대신 index: true 를 사용할 수도 있습니다.
         element: <Home />,
       },
       {
-        path:"profile",
-        element: <Profile/>,
+        path: "profile",
+        element: <Profile />,
       },
-    ]
+    ],
   },
   {
     path: "/login",
     element: <Login />,
   },
-  {path: "/create-account",
-   element: <CreateAccount />,
-  }
-])
+  {
+    path: "/create-account",
+    element: <CreateAccount />,
+  },
+]);
 
 const GlobalStyles = createGlobalStyle`
   ${reset};
@@ -59,10 +60,10 @@ const Wrapper = styled.div`
 `;
 
 function App() {
-  const [isLoading, setIsLoading] = React.useState(true);
+  const [isLoading, setLoading] = React.useState(true);
   const init = async() => {
     await auth.authStateReady();
-    setIsLoading(false);
+    setLoading(false);
   }
   useEffect(() => {
     init();
