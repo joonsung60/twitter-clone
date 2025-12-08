@@ -5,7 +5,7 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { updateProfile } from "firebase/auth";
 import { collection, query, where, orderBy, limit, getDocs } from "firebase/firestore";
 import Tweet from "../components/tweet";
-import { ITweet } from "../components/timeline";
+import type { ITweet } from "../components/timeline";
 
 const Wrapper = styled.div`
   display: flex;

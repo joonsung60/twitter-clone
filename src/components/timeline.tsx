@@ -1,9 +1,9 @@
-import { collection, getDocs, orderBy, query, onSnapshot, limit } from "firebase/firestore";
+import { collection, orderBy, query, onSnapshot, limit } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import { db } from "../firebase";
 import Tweet from "./tweet";
-import { Unsubscribe } from "firebase/auth";
+import type { Unsubscribe } from "firebase/auth";
 
 export interface ITweet {
   photo?: string;
@@ -51,6 +51,7 @@ export default function Timeline(){
     };
     fetchTweets();
     return () => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       unsubscribe && unsubscribe();
     };
   }, []);

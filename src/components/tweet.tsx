@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { ITweet } from "./timeline";
+import type { ITweet } from "./timeline";
 import { auth, db, storage } from "../firebase";
 import { deleteDoc, doc, updateDoc, deleteField } from "firebase/firestore";
 import { deleteObject, ref, uploadBytes, getDownloadURL } from "firebase/storage";
@@ -173,6 +173,7 @@ export default function Tweet({ username, photo, tweet, userId, id }: ITweet) {
     try {
       setIsSaving(true);
       const docRef = doc(db, "tweets", id);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const updates: any = { tweet: editedTweet };
 
       if (newFile) {
